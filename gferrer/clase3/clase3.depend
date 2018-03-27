@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1522183861 source:c:\test\gferrer\clase3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
