@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1523051007 source:c:\users\gferrer_mecon\programacion_1_laboratorio_1\gferrer\clase_5\clase_5\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1523051172 source:c:\test\gferrer\clase_5\clase_5\main.c
+	<stdio.h>
+	<stdlib.h>
+
