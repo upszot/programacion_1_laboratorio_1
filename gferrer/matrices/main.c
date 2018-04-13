@@ -7,10 +7,11 @@
 
 
 float calculapromedio(int nota,int nota2);
-void ordenaVectores(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50]);
+void ordenaVectores(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50], int TipoOrden );
 void mostrar_resultado(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50], int cantidad);
 void cargaVectores(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50]);
 void CargaAlumno(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50], int index);
+void intercambia_posicion(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50], int posAnt, int postSig);
 
 void menu();
 int BuscarLibre(int [],int);
@@ -42,14 +43,14 @@ int main()
                 mostrar_resultado(legajo,nota1,nota2,promedio,nombre,TAM);
                 system("pause");
                 break;
-            case 3: //mostrar
+            case 3: //Modificar
                 break;
-            case 4: //ordenar
+            case 4: //Baja
                 break;
-            case 5: //ordenar
-                ordenaVectores(legajo,nota1,nota2,promedio,nombre);
+            case 5: //Ordenar
+                ordenaVectores(legajo,nota1,nota2,promedio,nombre,1);
                 break;
-            case 6: //ordenar
+            case 6: //Salir
                 seguir = 'n';
                 break;
         }
@@ -172,36 +173,50 @@ void cargaVectores(int legajo[],int nota1[],int nota2[],float promedio[], char n
         promedio[i]=calculapromedio(nota1[i],nota2[i]);
     }//FIN for(int i = 0; i < TAM; i++)
 }
-void ordenaVectores(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50])
+void ordenaVectores(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50], int TipoOrden )
 {
-    float aux_float;
-    int aux_int;
-    char aux_char[50];
 
     for(int i=0;i<TAM -1;i++)
     {
         for(int j=i+1;j<TAM ;j++)
         {
-            if(promedio[i]<promedio[j])
-            {// los muevo
-                aux_float=promedio[i];
-                promedio[i]=promedio[j];
-                promedio[j]=aux_float;
+            switch(TipoOrden)
+            {
+                case 1: //ordena por promedio mayor a menor
+                    if(promedio[i]<promedio[j])
+                    {// los muevo
+                        intercambia_posicion( legajo, nota1, nota2, promedio,  nombre,  i,  j);
+                    } //FIN if(promedio[i]<promedio[j])
+                    break;
+                case 2:
+                    break;
 
-                aux_int=nota1[i];
-                nota1[i]=nota1[j];
-                nota1[j]=aux_int;
+            }
 
-                aux_int=nota2[i];
-                nota2[i]=nota2[j];
-                nota2[j]=aux_int;
-
-                strcpy(aux_char,nombre[i]);
-                strcpy(nombre[i],nombre[j]);
-                strcpy(nombre[j],aux_char);
-            } //FIN if(promedio[i]<promedio[j])
         }
     }
+}
+void intercambia_posicion(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50], int posAnt, int postSig)
+{
+    float aux_float;
+    int aux_int;
+    char aux_char[50];
+
+    aux_float=promedio[posAnt];
+    promedio[posAnt]=promedio[postSig];
+    promedio[postSig]=aux_float;
+
+    aux_int=nota1[posAnt];
+    nota1[posAnt]=nota1[postSig];
+    nota1[postSig]=aux_int;
+
+    aux_int=nota2[posAnt];
+    nota2[posAnt]=nota2[postSig];
+    nota2[postSig]=aux_int;
+
+    strcpy(aux_char,nombre[posAnt]);
+    strcpy(nombre[posAnt],nombre[postSig]);
+    strcpy(nombre[postSig],aux_char);
 }
 
 void mostrar_resultado(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50], int cantidad)
