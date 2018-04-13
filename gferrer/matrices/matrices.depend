@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1523655867 source:c:\test\gferrer\matrices\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
