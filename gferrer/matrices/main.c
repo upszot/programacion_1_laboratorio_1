@@ -8,7 +8,7 @@
 
 float calculapromedio(int nota,int nota2);
 void ordenaVectores(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50]);
-void mostrar_resultado(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50]);
+void mostrar_resultado(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50], int cantidad);
 void cargaVectores(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50]);
 void CargaAlumno(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50], int index);
 
@@ -17,7 +17,7 @@ int BuscarLibre(int [],int);
 
 int main()
 {
-    int legajo[TAM];
+    int legajo[TAM]={};
     int nota1[TAM];
     int nota2[TAM];
     float promedio[TAM];
@@ -39,7 +39,7 @@ int main()
                 //llamo a funcion cargar
                 break;
             case 2: //Mostrar
-                mostrar_resultado(legajo,nota1,nota2,promedio,nombre);
+                mostrar_resultado(legajo,nota1,nota2,promedio,nombre,TAM);
                 system("pause");
                 break;
             case 3: //mostrar
@@ -204,15 +204,17 @@ void ordenaVectores(int legajo[],int nota1[],int nota2[],float promedio[], char 
     }
 }
 
-void mostrar_resultado(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50])
+void mostrar_resultado(int legajo[],int nota1[],int nota2[],float promedio[], char nombre[][50], int cantidad)
 {
+
     printf("\n---------------------------------------\n");
     printf("LEGAJO%cNOMBRE%cNOTA 1%cNOTA 2%cPROMEDIO\n", TAB, TAB, TAB);
     printf("---------------------------------------\n");
 
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < cantidad; i++)
     {
-        printf("%d%c%s%c%d%c%d%c%f\n", legajo[i], TAB, nombre[i], TAB, nota1[i], TAB, nota2[i], TAB, promedio[i]);
+        if(legajo[i]!=0)
+        printf("%d%c%c%s%c%d%c%d%c%f\n", legajo[i], TAB,TAB, nombre[i], TAB, nota1[i], TAB, nota2[i], TAB, promedio[i]);
     }
     printf("---------------------------------------\n");
 }
