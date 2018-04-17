@@ -2,59 +2,85 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 typedef struct
 {
-    int legajo;
-    int nota;
-    int nota2;
-    float promedio;
-}T_Alumno;
+    int codigo;
+    char descripcion[50];
+    int stock;
+    float precio_costo;
+    //struct T_Poducto * next;
+}T_Producto;
 
-typedef struct
-{
-    int legajo;
-    int nota;
-    int nota2;
-    float promedio;
-
-    struct T_Persona * next;
-}T_Persona;
-
-float promedio(int nota,int nota2);
+void mostrar(T_Producto producto);
+void cargar(T_Producto *producto);
+void strcopyProducto(T_Producto *ProductoDestino,T_Producto ProductoOrigen);
+T_Producto *cargar2();
 
 int main()
 {
-
-    T_Alumno alumnos[3];
-
-    T_Persona *persona= new T_Persona;
-
-
-
-    for (int i =0; i < 3; i ++)
-    {
-        printf("\nIngrese legajo del alumno %i: ",i);
-        scanf("%d",&alumnos[i].legajo);
-        printf("\nIngrese Nota 1: ");
-        scanf("%d",&alumnos[i].nota);
-        printf("\nIngrese Nota 2: ");
-        scanf("%d",&alumnos[i].nota2);
-    }
+    T_Producto unProducto;
+    T_Producto otroProducto;
+    //T_Producto *productoB= (T_Producto *) malloc (sizeof( T_Producto));
 
     system("cls");
-    for (int i =0; i < 3; i ++)
+    T_Producto *pproducto=cargar2();
+
+    if (pproducto == NULL )
     {
-        alumnos[i].promedio=promedio(alumnos[i].nota,alumnos[i].nota2);
-        printf("\n\nAlumno: %d  Tiene el promedio: %f",alumnos[i].legajo,alumnos[i].promedio);
+			printf("ERROR: sin memoria \n");
+	}
+	else
+    {
+        cargar(pproducto);
+        mostrar(*pproducto);
+
     }
+
+    free(pproducto);
+
+    //cargar(&unProducto);
+    //mostrar(unProducto);
+    //strcopyProducto(&otroProducto,unProducto);
+
     getch();
     return 0;
 }
 
-float promedio(int nota,int nota2)
+void mostrar(T_Producto producto)
 {
-    float rta;
-    rta= ((float)nota+nota2)/2;
-    return rta;
+    printf("\n\n");
+    printf("\n Codigo: %d",producto.codigo);
+    printf("\n descripcion: %s",producto.descripcion);
+    printf("\n stock: %d",producto.stock);
+    printf("\n precio_costo: %f",producto.precio_costo);
+    printf("\n\n\n");
 }
+
+void cargar(T_Producto *producto)
+{
+    producto->codigo=0001;
+    strcpy(producto->descripcion,"descipcion producto 1..");
+    producto->stock=10;
+    producto->precio_costo=200;
+}
+
+T_Producto *cargar2()
+{
+    T_Producto *productoB= (T_Producto *) malloc (sizeof( T_Producto));
+    return    productoB;
+}
+
+void strcopyProducto(T_Producto *ProductoDestino,T_Producto ProductoOrigen)
+{
+    ProductoDestino->codigo=ProductoOrigen.codigo;
+    strcpy(ProductoDestino->descripcion,ProductoOrigen.descripcion);
+    ProductoDestino->precio_costo=ProductoOrigen.precio_costo;
+    ProductoDestino->stock=ProductoOrigen.stock;
+}
+
+
+/*
+Referencia
+https://www.codingunit.com/c-tutorial-the-functions-malloc-and-free
+
+*/
