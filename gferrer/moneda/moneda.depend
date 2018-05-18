@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1526684362 source:c:\test\gferrer\punteros\punteros_03\moneda\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1526684296 c:\test\gferrer\punteros\punteros_03\moneda\funciones.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1526684296 source:c:\test\gferrer\punteros\punteros_03\moneda\funciones.c
+	"funciones.h"
+
