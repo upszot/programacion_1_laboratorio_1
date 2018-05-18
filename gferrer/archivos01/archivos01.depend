@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1526681489 source:c:\test\gferrer\archivos\archivos01\funciones.c
+	"funciones.h"
+
+1526681489 c:\test\gferrer\archivos\archivos01\funciones.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1526683597 source:c:\test\gferrer\archivos\archivos01\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+

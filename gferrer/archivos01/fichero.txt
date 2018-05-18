@@ -1,0 +1,4 @@
+hola
+Esto es un texto dentro del fichero.
+sadad
+sss
