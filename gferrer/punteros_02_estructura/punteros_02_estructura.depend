@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1526673912 source:c:\test\gferrer\punteros\punteros_02_estructura\funciones.c
+	"funciones.h"
+
+1526673732 c:\test\gferrer\punteros\punteros_02_estructura\funciones.h
+	<stdio.h>
+	<stdlib.h>
+
+1526674071 source:c:\test\gferrer\punteros\punteros_02_estructura\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
