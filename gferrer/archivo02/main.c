@@ -17,13 +17,20 @@ int main()
     char buffer[100]="\nEsto es un texto dentro del fichero.";
     char buffin[100];
     int nro=123;
+    char id[10];
+    char nombre[10];
+    char apellido[10];
+    int cont=0;
+    int idNro;
     do
     {
             menu("1. Escribir en archivo:(modo texto) \n"
-                 "2. Escribir en archivo:(modo binario) \n" \n"
+                 "2. Escribir en archivo:(modo binario) \n"
                  "3. Borrar archivos \n"
                  "5. Leer archivo: (modo texto) \n"
-                 "5. Leer archivo: (modo binario) \n"
+                 "6. Leer archivo: (modo binario) \n"
+                 "7.  \n"
+                 "8. Leer CSV:  \n"
                  );
 
             scanf("%d",&opcion);
@@ -77,6 +84,21 @@ int main()
                     }
 
                     system("pause");
+                    break;
+                case 7://mascaras
+                    //mockaroo.com   -> generador de datos
+                    // para CVS separacion por , con salto de linea
+
+                    if(cont %10==0)
+                    {//hago una pausa cada 10 lineas
+                        system("pause");
+                    }
+                    cont++;
+                    fp=fopen(Archivo,"rb");
+                    fscanf(fp,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,apellido);
+                    idNro=atoi(id);
+                    printf("%d %s %s \n",idNro,nombre,apellido);
+
                     break;
                 case 0:
                     seguir = 'n';
